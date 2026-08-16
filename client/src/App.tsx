@@ -173,7 +173,6 @@ function App() {
       </Route>
       </Switch>
       {isBuyerRoute && <CustomerServiceWidget />}
-      <RoleSwitcher />
     </>
   );
 }
