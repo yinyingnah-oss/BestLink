@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Matcha 50 (#F6F7E2) for background */
+    --background: 63 47% 93%;
+    --foreground: 83 50% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 83 50% 15%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 83 50% 15%;
+ 
+    /* Matcha 500 (#ACC18B) for primary */
+    --primary: 83 30% 65%;
+    --primary-foreground: 83 50% 15%;
+ 
+    --secondary: 83 30% 90%;
+    --secondary-foreground: 83 50% 20%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}

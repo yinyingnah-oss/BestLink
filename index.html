@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boxgo - 泰货第一</title>
+    <style>
+      #error-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(255,0,0,0.1);
+        color: red;
+        z-index: 999999;
+        display: none;
+        padding: 20px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="error-overlay"></div>
+    <script>
+      window.addEventListener('error', function(e) {
+        document.getElementById('error-overlay').style.display = 'block';
+        document.getElementById('error-overlay').innerHTML += 'ERROR: ' + e.message + '\n' + e.filename + ':' + e.lineno + '\n\n';
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        document.getElementById('error-overlay').style.display = 'block';
+        document.getElementById('error-overlay').innerHTML += 'PROMISE REJECTION: ' + (e.reason && e.reason.stack ? e.reason.stack : e.reason) + '\n\n';
+      });
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/client/src/main.tsx"></script>
+  </body>
+</html>
