@@ -164,11 +164,15 @@ export default function Home() {
                   <div className="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
                     <User className="w-5 h-5 text-stone-500" />
                   </div>
+                  <span className="hidden md:inline font-bold text-sm">个人账户</span>
                 </div>
               ) : (
-                <button onClick={() => startLogin()} className="font-bold text-sm bg-stone-900 text-white px-4 py-2 rounded-full hover:bg-stone-800 transition shadow-md">
-                  登录
-                </button>
+                <div className="flex items-center gap-2 cursor-pointer hover:text-matcha-500 transition" onClick={() => startLogin()}>
+                  <div className="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
+                    <User className="w-5 h-5 text-stone-500" />
+                  </div>
+                  <span className="hidden md:inline font-bold text-sm">登录 / 注册</span>
+                </div>
               )}
             </div>
           </div>
