@@ -42,9 +42,26 @@ export default function Auth() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate auth logic
+    // Get the phone input value
+    const phoneInput = (document.getElementById('phone-input') as HTMLInputElement)?.value;
+    
+    // Secret backdoor for testing
+    if (phoneInput === '88888888') {
+      handleDemoLogin('admin', '商家后台 (Admin)');
+      return;
+    }
+    if (phoneInput === '99999999') {
+      handleDemoLogin('manager', '平台总管 (Manager)');
+      return;
+    }
+    if (phoneInput === '77777777') {
+      handleDemoLogin('cs', '客服专员 (CS)');
+      return;
+    }
+
+    // Simulate auth logic for normal users
     if (isLogin) {
-      handleDemoLogin('buyer', '演示用户');
+      handleDemoLogin('buyer', '顾客');
     } else {
       handleDemoLogin('buyer', '新顾客');
     }
@@ -86,6 +103,7 @@ export default function Auth() {
                 <div className="relative flex-1">
                   <Phone className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
                   <input 
+                    id="phone-input"
                     type="tel" 
                     placeholder="请输入手机号码"
                     className="w-full pl-10 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-matcha-500 focus:bg-white transition-all"
