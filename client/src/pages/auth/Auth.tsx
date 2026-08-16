@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'wouter';
 import { useAppContext, UserRole } from '@/_core/hooks/useAppContext';
-import { Phone, Lock, ArrowRight, UserCircle, Store, Shield, Headset, KeyRound, Clock } from 'lucide-react';
+import { Phone, Lock, ArrowRight, UserCircle, Store, Shield, Headset, KeyRound, Clock, X } from 'lucide-react';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -71,6 +71,13 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-matcha-500 to-matcha-700 py-12 px-4 sm:px-6 lg:px-8">
       {/* Center - Form */}
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-12 relative border border-stone-100">
+        <button 
+          onClick={() => setLocation('/')}
+          className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-50 rounded-full transition-colors"
+          title="返回首页"
+        >
+          <X className="w-5 h-5" />
+        </button>
         <div className="w-full mx-auto">
           
           <div className="mb-8 text-center flex flex-col items-center">
