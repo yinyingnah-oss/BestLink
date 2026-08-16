@@ -124,15 +124,7 @@ export default function Auth() {
               </div>
             </div>
 
-            {!isLogin && registerRole === 'admin' && (
-              <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">入驻国家</label>
-                <select className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-matcha-500 focus:bg-white transition-all">
-                  <option value="MY">马来西亚 🇲🇾</option>
-                  <option value="TH">泰国 🇹🇭</option>
-                </select>
-              </div>
-            )}
+
 
             <button 
               type="submit"
@@ -151,41 +143,7 @@ export default function Auth() {
             )}
           </div>
 
-          {/* Developer / Demo Section */}
-          <div className="mt-12 pt-8 border-t border-stone-100">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider text-center mb-4">
-              开发与演示环境：一键体验通道
-            </p>
-            <div className="grid grid-cols-2 gap-3 mb-3">
-              <button 
-                onClick={() => handleDemoLogin('buyer', '买家 (演示)')}
-                className="flex items-center justify-center gap-2 py-2 border border-stone-200 rounded-lg text-sm font-medium text-stone-600 hover:bg-stone-50 transition-colors"
-              >
-                <UserCircle className="w-4 h-4 text-matcha-600" /> 顾客视图
-              </button>
-              <button 
-                onClick={() => handleDemoLogin('admin', '商家 (演示)')}
-                className="flex items-center justify-center gap-2 py-2 border border-stone-200 rounded-lg text-sm font-medium text-stone-600 hover:bg-stone-50 transition-colors"
-              >
-                <Store className="w-4 h-4 text-orange-500" /> 商家后台
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <button 
-                onClick={() => handleDemoLogin('manager', '平台总管')}
-                className="flex items-center justify-center gap-2 py-2 border border-stone-200 rounded-lg text-sm font-medium text-stone-600 hover:bg-stone-50 transition-colors"
-              >
-                <Shield className="w-4 h-4 text-purple-600" /> 总管 (Manager)
-              </button>
-              <button 
-                onClick={() => handleDemoLogin('cs', '客服人员')}
-                className="flex items-center justify-center gap-2 py-2 border border-stone-200 rounded-lg text-sm font-medium text-stone-600 hover:bg-stone-50 transition-colors"
-              >
-                <Headset className="w-4 h-4 text-blue-500" /> 客服 (CS)
-              </button>
-            </div>
 
-          </div>
 
         </div>
       </div>
