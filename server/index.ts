@@ -46,7 +46,7 @@ app.post('/api/webhook/toyyibpay', async (req, res) => {
   }
 });
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`tRPC backend running on http://localhost:${PORT}`);
 });
