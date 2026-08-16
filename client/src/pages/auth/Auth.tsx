@@ -68,7 +68,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-matcha-500 to-matcha-700 py-12 px-4 sm:px-6 lg:px-8">
       {/* Center - Form */}
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-12 relative border border-stone-100">
         <div className="w-full mx-auto">
