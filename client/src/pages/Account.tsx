@@ -245,95 +245,91 @@ export default function Account() {
               {activeTab === 'basic' && (
                 <div className="animate-in fade-in bg-[#F8F9FA] -m-6 md:-m-8 p-4 md:p-6 min-h-[500px]">
                   
-                  {memberData ? (
-                    <div className="space-y-4 max-w-2xl mx-auto">
-                      
-                      {/* 头像卡片 */}
-                      <div className="p-6 bg-white rounded-xl shadow-sm flex flex-col items-center justify-center cursor-pointer hover:bg-stone-50 transition-colors">
-                        <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center overflow-hidden mb-2">
-                          <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix&backgroundColor=ffdfbf" alt="avatar" className="w-16 h-16" />
-                        </div>
-                        <div className="text-stone-500 text-sm flex items-center gap-1 mt-1">
-                          <Edit2 className="w-3.5 h-3.5" /> 编辑
-                        </div>
+                  <div className="space-y-4 max-w-2xl mx-auto">
+                    
+                    {/* 头像卡片 */}
+                    <div className="p-6 bg-white rounded-xl shadow-sm flex flex-col items-center justify-center cursor-pointer hover:bg-stone-50 transition-colors">
+                      <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center overflow-hidden mb-2">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix&backgroundColor=ffdfbf" alt="avatar" className="w-16 h-16" />
                       </div>
-
-                      {/* 名称与简介 */}
-                      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium">名称</span>
-                          <div className="flex items-center text-stone-500 text-sm">
-                            <span>{localProfile.name || memberData.name}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
-                          </div>
-                        </div>
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium">简介</span>
-                          <div className="flex items-center text-stone-400 text-sm">
-                            <span>{localProfile.bio}</span>
-                            <ChevronRight className="w-4 h-4 ml-1" />
-                          </div>
-                        </div>
+                      <div className="text-stone-500 text-sm flex items-center gap-1 mt-1">
+                        <Edit2 className="w-3.5 h-3.5" /> 编辑
                       </div>
-
-                      {/* 性别与生日 */}
-                      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium flex items-center gap-1">
-                            性别 <span className="text-stone-400 border border-stone-300 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[9px] cursor-help">?</span>
-                          </span>
-                          <div className="flex items-center text-stone-500 text-sm">
-                            <span>{localProfile.gender}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
-                          </div>
-                        </div>
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium flex items-center gap-1">
-                            生日 <span className="text-stone-400 border border-stone-300 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[9px] cursor-help">?</span>
-                          </span>
-                          <div className="flex items-center text-stone-500 text-sm">
-                            <span>{localProfile.birthday}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* 联系方式 */}
-                      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium">手机</span>
-                          <div className="flex items-center text-stone-500 text-sm">
-                            <span>{localProfile.phone || memberData.phone}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
-                          </div>
-                        </div>
-                        <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
-                          <span className="text-stone-700 font-medium">电邮</span>
-                          <div className="flex items-center text-stone-500 text-sm">
-                            <span>{localProfile.email || memberData.email}</span>
-                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Delete Account Button */}
-                      <div className="pt-8 flex justify-center pb-8">
-                        <button 
-                          onClick={() => {
-                            setShowDeleteModal(true);
-                            setDeleteStep(1);
-                            setDeleteOtp('');
-                          }}
-                          className="text-stone-400 hover:text-red-500 text-sm font-medium underline transition-colors"
-                        >
-                          申请删除账号
-                        </button>
-                      </div>
-
                     </div>
-                  ) : (
-                    <div className="text-stone-500 p-8 text-center">加载中...</div>
-                  )}
+
+                    {/* 名称与简介 */}
+                    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium">名称</span>
+                        <div className="flex items-center text-stone-500 text-sm">
+                          <span>{localProfile.name || memberData?.name || currentUser?.name || '顾客'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium">简介</span>
+                        <div className="flex items-center text-stone-400 text-sm">
+                          <span>{localProfile.bio || '现在设定'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 性别与生日 */}
+                    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium flex items-center gap-1">
+                          性别 <span className="text-stone-400 border border-stone-300 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[9px] cursor-help">?</span>
+                        </span>
+                        <div className="flex items-center text-stone-500 text-sm">
+                          <span>{localProfile.gender || '女性'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium flex items-center gap-1">
+                          生日 <span className="text-stone-400 border border-stone-300 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[9px] cursor-help">?</span>
+                        </span>
+                        <div className="flex items-center text-stone-500 text-sm">
+                          <span>{localProfile.birthday || '**/**/2004'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 联系方式 */}
+                    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 border-b border-stone-50 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium">手机</span>
+                        <div className="flex items-center text-stone-500 text-sm">
+                          <span>{localProfile.phone || memberData?.phone || '+60 12-345 6789'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                      <div onClick={() => setShowEditProfileModal(true)} className="flex justify-between items-center px-4 py-4 cursor-pointer hover:bg-stone-50 transition-colors">
+                        <span className="text-stone-700 font-medium">电邮</span>
+                        <div className="flex items-center text-stone-500 text-sm">
+                          <span>{localProfile.email || memberData?.email || 'user@example.com'}</span>
+                          <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Delete Account Button */}
+                    <div className="pt-8 flex justify-center pb-8">
+                      <button 
+                        onClick={() => {
+                          setShowDeleteModal(true);
+                          setDeleteStep(1);
+                          setDeleteOtp('');
+                        }}
+                        className="text-stone-400 hover:text-red-500 text-sm font-medium underline transition-colors"
+                      >
+                        申请删除账号
+                      </button>
+                    </div>
+
+                  </div>
                 </div>
               )}
 
@@ -342,51 +338,49 @@ export default function Account() {
                 <div className="animate-in fade-in">
                   <h2 className="text-xl font-bold text-stone-800 mb-6 border-b border-stone-100 pb-4">会员与BL coin</h2>
                   
-                  {memberData && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                      <div className="bg-amber-50 border border-amber-100 p-6 rounded-xl relative overflow-hidden">
-                        <Crown className="absolute -right-4 -bottom-4 w-32 h-32 text-amber-500 opacity-10" />
-                        <div className="flex justify-between items-center mb-1 relative z-10">
-                          <div className="text-amber-800 font-medium">当前会员等级</div>
-                          <button 
-                            onClick={() => setShowBenefitsModal(true)}
-                            className="text-xs text-amber-600 hover:text-amber-800 underline decoration-amber-300 underline-offset-2 flex items-center gap-1"
-                          >
-                            <Info className="w-3 h-3" />
-                            查看等级福利
-                          </button>
-                        </div>
-                        <div className="text-2xl font-black text-amber-600 flex items-center gap-2 relative z-10">
-                          {memberData.memberLevel === 'vip' ? '🥇 VIP' : '普通会员'}
-                        </div>
-                        {memberData.memberLevel !== 'vip' && (
-                          <div className="text-xs text-amber-700 mt-2">再消费 RM 250.00 即可升级为 VIP</div>
-                        )}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <div className="bg-amber-50 border border-amber-100 p-6 rounded-xl relative overflow-hidden">
+                      <Crown className="absolute -right-4 -bottom-4 w-32 h-32 text-amber-500 opacity-10" />
+                      <div className="flex justify-between items-center mb-1 relative z-10">
+                        <div className="text-amber-800 font-medium">当前会员等级</div>
+                        <button 
+                          onClick={() => setShowBenefitsModal(true)}
+                          className="text-xs text-amber-600 hover:text-amber-800 underline decoration-amber-300 underline-offset-2 flex items-center gap-1"
+                        >
+                          <Info className="w-3 h-3" />
+                          查看等级福利
+                        </button>
                       </div>
-                      
-                      <div className="bg-matcha-50 border border-matcha-100 p-6 rounded-xl relative overflow-hidden flex flex-col justify-between">
-                        <div>
-                          <div className="text-matcha-800 font-medium mb-1 relative z-10">当前可用BL coin</div>
-                          <div className="text-3xl font-black text-matcha-600 relative z-10">
-                            {memberData.points.toLocaleString()} <span className="text-sm font-medium">分</span>
-                          </div>
-                          <div className="text-xs text-matcha-700 mt-2 space-y-1">
-                            <div>• 购买指定商品可获得对应的BL coin奖励</div>
-                            <div>• BL coin可在结账时抵扣现金</div>
-                          </div>
+                      <div className="text-2xl font-black text-amber-600 flex items-center gap-2 relative z-10">
+                        {memberData?.memberLevel === 'vip' ? '🥇 VIP' : '普通会员'}
+                      </div>
+                      {memberData?.memberLevel !== 'vip' && (
+                        <div className="text-xs text-amber-700 mt-2">再消费 RM 250.00 即可升级为 VIP</div>
+                      )}
+                    </div>
+                    
+                    <div className="bg-matcha-50 border border-matcha-100 p-6 rounded-xl relative overflow-hidden flex flex-col justify-between">
+                      <div>
+                        <div className="text-matcha-800 font-medium mb-1 relative z-10">当前可用BL coin</div>
+                        <div className="text-3xl font-black text-matcha-600 relative z-10">
+                          {(memberData?.points || 0).toLocaleString()} <span className="text-sm font-medium">分</span>
                         </div>
-                        <div className="mt-4">
-                          <Button 
-                            onClick={() => setShowRedeemModal(true)}
-                            size="sm" 
-                            className="bg-matcha-600 text-white hover:bg-matcha-700 font-bold"
-                          >
-                            兑换优惠卷
-                          </Button>
+                        <div className="text-xs text-matcha-700 mt-2 space-y-1">
+                          <div>• 购买指定商品可获得对应的BL coin奖励</div>
+                          <div>• BL coin可在结账时抵扣现金</div>
                         </div>
+                      </div>
+                      <div className="mt-4">
+                        <Button 
+                          onClick={() => setShowRedeemModal(true)}
+                          size="sm" 
+                          className="bg-matcha-600 text-white hover:bg-matcha-700 font-bold"
+                        >
+                          兑换优惠卷
+                        </Button>
                       </div>
                     </div>
-                  )}
+                  </div>
 
                   <h3 className="font-bold text-stone-800 mb-4">BL coin交易历史 (近 10 条)</h3>
                   <div className="border border-stone-200 rounded-lg overflow-hidden">

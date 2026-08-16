@@ -5,7 +5,8 @@ import superjson from 'superjson';
 
 export const trpc = createTRPCReact<AppRouter>();
 
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001/api/trpc';
+// Use production Render URL if not specified
+const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://bestlink-ignk.onrender.com/api/trpc' : 'http://localhost:5001/api/trpc');
 
 export const trpcClient = trpc.createClient({
   links: [
