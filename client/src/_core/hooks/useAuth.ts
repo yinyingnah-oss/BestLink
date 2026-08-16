@@ -1,6 +1,9 @@
+import { useAppContext } from "./useAppContext";
+
 export function useAuth() {
+  const { currentUser } = useAppContext();
   return {
-    user: { name: "Test User", memberLevel: "vip" },
-    isAuthenticated: true,
+    user: currentUser,
+    isAuthenticated: !!currentUser,
   };
 }

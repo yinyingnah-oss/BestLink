@@ -29,12 +29,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>('zh');
   const [currency, setCurrencyState] = useState<Currency>('MYR');
-  const [currentUser, setCurrentUserState] = useState<User | null>({
-    id: 'user_1',
-    name: '买家测试',
-    role: 'buyer',
-    merchantStatus: 'none'
-  });
+  const [currentUser, setCurrentUserState] = useState<User | null>(null);
   const [rates, setRates] = useState<Record<Currency, number>>({
     MYR: 0.13,
     THB: 1
