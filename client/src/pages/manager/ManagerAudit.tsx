@@ -7,58 +7,7 @@ import { Badge } from "@/components/ui/badge";
 export default function ManagerAudit() {
   const [filterType, setFilterType] = useState("all");
 
-  const mockLogs = [
-    {
-      id: "LOG-20260816-01",
-      timestamp: "2026-08-16 10:45:22",
-      operator: "M-001 (系统总管)",
-      module: "financial",
-      action: "汇率修改",
-      description: "修改全局汇率配置: 1 MYR = 7.50 THB (原: 7.55 THB)",
-      ip: "103.25.x.x",
-      status: "success"
-    },
-    {
-      id: "LOG-20260816-02",
-      timestamp: "2026-08-16 09:30:10",
-      operator: "M-001 (系统总管)",
-      module: "vendor",
-      action: "商家入驻审批",
-      description: "批准商家入驻申请 (V-105: 曼谷美妆精选)，设置独立抽成比例: 8%",
-      ip: "103.25.x.x",
-      status: "success"
-    },
-    {
-      id: "LOG-20260815-01",
-      timestamp: "2026-08-15 16:20:05",
-      operator: "CS-012 (高级客服)",
-      module: "order",
-      action: "强制退款介入",
-      description: "裁决退单 RF2026081501 支持买家，强制从商家 V-102 余额扣除 RM 120.00",
-      ip: "210.19.x.x",
-      status: "warning"
-    },
-    {
-      id: "LOG-20260815-02",
-      timestamp: "2026-08-15 14:10:00",
-      operator: "M-001 (系统总管)",
-      module: "campaign",
-      action: "下发全平台优惠券",
-      description: "创建并下发 10,000 张无门槛免邮券 (活动代号: FREE_SHIP_AUG)",
-      ip: "103.25.x.x",
-      status: "success"
-    },
-    {
-      id: "LOG-20260814-01",
-      timestamp: "2026-08-14 11:05:30",
-      operator: "M-002 (副总管)",
-      module: "security",
-      action: "封停异常账号",
-      description: "永久封停刷单买家账号 U-992381 (原因: 批量注册/虚假交易)",
-      ip: "175.14.x.x",
-      status: "critical"
-    }
-  ];
+  const mockLogs: any[] = [];
 
   const getModuleIcon = (module: string) => {
     switch (module) {

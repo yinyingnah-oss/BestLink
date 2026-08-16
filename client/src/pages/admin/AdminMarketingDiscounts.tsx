@@ -12,26 +12,7 @@ export default function AdminMarketingDiscounts() {
   
   const tabs = ["全部", "进行中", "接下来的", "已结束"];
 
-  const [mockDiscounts, setMockDiscounts] = useState([
-    {
-      id: "D20240801",
-      name: "泰国泼水节全场8折",
-      status: "进行中",
-      discount: "20% OFF",
-      startTime: "2026-08-01 00:00",
-      endTime: "2026-08-31 23:59",
-      productsCount: 15
-    },
-    {
-      id: "D20240915",
-      name: "秋季新品限时立减",
-      status: "接下来的",
-      discount: "立减 ฿50",
-      startTime: "2026-09-15 00:00",
-      endTime: "2026-09-20 23:59",
-      productsCount: 3
-    }
-  ]);
+  const [mockDiscounts, setMockDiscounts] = useState<any[]>([]);
 
   const handleCreate = () => {
     if (!newDiscount.name) return;

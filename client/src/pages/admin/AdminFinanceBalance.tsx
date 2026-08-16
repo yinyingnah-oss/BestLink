@@ -100,7 +100,8 @@ export default function AdminFinanceBalance() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-stone-100">
-                {withdrawals?.map((wd: any) => (
+                {withdrawals && withdrawals.length > 0 ? (
+                  withdrawals.map((wd: any) => (
                   <tr key={wd.id} className="border-b border-stone-100 hover:bg-stone-50 transition-colors">
                     <td className="px-6 py-4 font-medium text-stone-700">#{wd.id}</td>
                     <td className="px-6 py-4 text-stone-600">{new Date(wd.createdAt).toLocaleString()}</td>
@@ -121,7 +122,14 @@ export default function AdminFinanceBalance() {
                       </span>
                     </td>
                   </tr>
-                ))}
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={5} className="px-6 py-12 text-center text-stone-500">
+                      暂无提现记录
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

@@ -13,18 +13,7 @@ export default function AdminOrdersRefunds() {
   const mainTabs = ["退货/退款/取消", "聊天管理", "评论管理"];
   const subTabs = ["全部", "需提供证据(1)", "待审查(0)", "需验证商品(0)"];
 
-  const [mockRefunds, setMockRefunds] = useState([
-    {
-      id: "RF2026081601",
-      orderId: "OD987654321",
-      productName: "Mistine 小黄帽防晒霜 SPF50 PA++++",
-      productImage: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=200",
-      amount: "฿ 399.00",
-      status: "需提供证据",
-      timeLeft: "1天 12小时",
-      buyer: "A***n"
-    }
-  ]);
+  const [mockRefunds, setMockRefunds] = useState<any[]>([]);
 
   const [showProcessModal, setShowProcessModal] = useState(false);
   const [selectedRefund, setSelectedRefund] = useState<any>(null);

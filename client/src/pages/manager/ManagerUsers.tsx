@@ -87,7 +87,8 @@ export default function ManagerUsers() {
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
                 <tr><td colSpan={6} className="px-6 py-8 text-center text-stone-500">加载中...</td></tr>
-              ) : filteredUsers?.map((user: any) => (
+              ) : filteredUsers && filteredUsers.length > 0 ? (
+                filteredUsers.map((user: any) => (
                 <tr key={user.id} className="hover:bg-stone-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-stone-800">{user.name}</td>
                   <td className="px-6 py-4 text-stone-600">{user.phone}</td>
@@ -111,9 +112,21 @@ export default function ManagerUsers() {
                     <Button variant="outline" size="sm" className="text-emerald-600 border-emerald-200 hover:bg-emerald-50" onClick={() => setCouponModal({ isOpen: true, user, code: "PLATFORM20", discount: "20", expiry: "2026-12-31", condition: "满RM100可用" })}>
                       <Gift className="w-4 h-4 mr-1" /> 平台发券
                     </Button>
+                    <Button variant="outline" size="sm" className="text-red-600 hover:bg-red-50" onClick={() => {
+                      if(window.confirm("确定要删除该用户吗？操作不可逆！")) {
+                        // delete logic
+                      }
+                    }}>
+                      <Trash2 className="w-4 h-4 mr-1" /> 删除
+                    </Button>
                   </td>
                 </tr>
-              ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6} className="px-6 py-12 text-center text-stone-500">暂无总管用户数据</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

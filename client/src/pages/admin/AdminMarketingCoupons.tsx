@@ -14,30 +14,7 @@ export default function AdminMarketingCoupons() {
   
   const tabs = ["全部", "进行中", "接下来的", "已结束"];
 
-  const [mockCoupons, setMockCoupons] = useState([
-    {
-      id: "C20240801",
-      name: "新客专享满减券",
-      code: "NEWBIE100",
-      status: "进行中",
-      type: "满减券 (固定金额)",
-      discount: "减 ฿100 (满 ฿500 可用)",
-      usage: "145 / 500",
-      startTime: "2026-08-01 00:00",
-      endTime: "2026-12-31 23:59"
-    },
-    {
-      id: "C20240915",
-      name: "双11提前抢折扣券",
-      code: "PRE1111",
-      status: "接下来的",
-      type: "折扣券 (百分比)",
-      discount: "打 9 折 (最高减 ฿300)",
-      usage: "0 / 1000",
-      startTime: "2026-10-25 00:00",
-      endTime: "2026-11-12 23:59"
-    }
-  ]);
+  const [mockCoupons, setMockCoupons] = useState<any[]>([]);
 
   const handleCreate = () => {
     if (!newCoupon.name || !newCoupon.code) return;

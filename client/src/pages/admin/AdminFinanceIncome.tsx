@@ -11,26 +11,7 @@ export default function AdminFinanceIncome() {
   const [activeTab, setActiveTab] = useState("已结算");
   const tabs = ["已结算", "待结算"];
 
-  const mockIncome = [
-    {
-      id: "INC-240815-001",
-      orderId: "ORD202608101234",
-      date: "2026-08-15 14:30",
-      amount: "฿ 1,250.00",
-      fee: "฿ 25.00",
-      netAmount: "฿ 1,225.00",
-      status: "已入账"
-    },
-    {
-      id: "INC-240814-089",
-      orderId: "ORD202608094567",
-      date: "2026-08-14 10:15",
-      amount: "฿ 340.00",
-      fee: "฿ 6.80",
-      netAmount: "฿ 333.20",
-      status: "已入账"
-    }
-  ];
+  const mockIncome: any[] = [];
 
   return (
     <AdminLayout>

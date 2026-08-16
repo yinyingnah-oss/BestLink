@@ -10,33 +10,9 @@ export default function ManagerProducts() {
   const [activeTab, setActiveTab] = useState<'standard' | 'image-review'>('standard');
   const [searchTerm, setSearchTerm] = useState("");
 
-  const mockStandardProducts = [
-    { id: 1, name: "泰国网红原装进口小老板海苔 (大包装)", category: "零食特产", price: 12.50, suggestedPrice: 18.00, stock: 500, image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=500&q=80" },
-    { id: 2, name: "Mistine 蜜丝婷 泰国版防晒霜 SPF50 PA+++", category: "美妆护肤", price: 35.00, suggestedPrice: 59.00, stock: 1200, image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80" },
-    { id: 3, name: "泰国卧佛牌青草药膏 50g*3瓶装", category: "健康护理", price: 28.00, suggestedPrice: 45.00, stock: 300, image: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=500&q=80" },
-    { id: 4, name: "金枕头榴莲冻干 100g 纯果肉", category: "零食特产", price: 45.00, suggestedPrice: 68.00, stock: 850, image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80" },
-  ];
+  const mockStandardProducts: any[] = [];
 
-  const mockImageReviews = [
-    { 
-      id: "REV-101", 
-      merchantName: "曼谷优品汇", 
-      productName: "泰国卧佛牌青草药膏 50g*3瓶装", 
-      originalImage: "https://images.unsplash.com/photo-1552693673-1bf958298935?w=500&q=80",
-      newImage: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=500&q=80",
-      submitTime: "2026-08-16 10:20",
-      status: "pending"
-    },
-    { 
-      id: "REV-102", 
-      merchantName: "泰好味代购", 
-      productName: "金枕头榴莲冻干 100g 纯果肉", 
-      originalImage: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=500&q=80",
-      newImage: "https://images.unsplash.com/photo-1611077544973-206e1cc3807c?w=500&q=80",
-      submitTime: "2026-08-15 15:40",
-      status: "pending"
-    }
-  ];
+  const mockImageReviews: any[] = [];
 
   const [reviews, setReviews] = useState(mockImageReviews);
 

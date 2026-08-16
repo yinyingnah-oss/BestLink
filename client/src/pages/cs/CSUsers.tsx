@@ -84,7 +84,8 @@ export default function CSUsers() {
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
                 <tr><td colSpan={6} className="px-6 py-8 text-center text-stone-500">加载中...</td></tr>
-              ) : filteredUsers?.map((user: any) => (
+              ) : filteredUsers && filteredUsers.length > 0 ? (
+                filteredUsers.map((user: any) => (
                 <tr key={user.id} className="hover:bg-stone-50 transition-colors">
                   <td className="px-6 py-4 font-medium text-stone-800">{user.name}</td>
                   <td className="px-6 py-4 text-stone-600">{user.phone}</td>
@@ -110,7 +111,12 @@ export default function CSUsers() {
                     </Button>
                   </td>
                 </tr>
-              ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={6} className="px-6 py-12 text-center text-stone-500">暂无顾客数据</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

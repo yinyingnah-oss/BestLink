@@ -161,10 +161,14 @@ export default function Home() {
               
               {isAuthenticated ? (
                 <div className="flex items-center gap-2 cursor-pointer hover:text-matcha-500 transition" onClick={() => setLocation("/account")}>
-                  <div className="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
-                    <User className="w-5 h-5 text-stone-500" />
-                  </div>
-                  <span className="hidden md:inline font-bold text-sm">个人账户</span>
+                  {user?.avatar ? (
+                    <img src={user.avatar} alt="Avatar" className="w-8 h-8 rounded-full object-cover" />
+                  ) : (
+                    <div className="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
+                      <User className="w-5 h-5 text-stone-500" />
+                    </div>
+                  )}
+                  <span className="hidden md:inline font-bold text-sm truncate max-w-[100px]">{user?.name || "个人账户"}</span>
                 </div>
               ) : (
                 <div className="flex items-center gap-2 cursor-pointer hover:text-matcha-500 transition" onClick={() => startLogin()}>

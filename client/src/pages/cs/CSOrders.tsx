@@ -37,30 +37,7 @@ export default function CSOrders() {
   };
 
   // ---------------- Refund/Return Logic ----------------
-  const [mockRefunds, setMockRefunds] = useState([
-    {
-      id: "RF2026081601",
-      orderId: "OD987654321",
-      vendor: "曼谷美妆精选 (泰国)",
-      productName: "Mistine 小黄帽防晒霜 SPF50 PA++++",
-      productImage: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=200",
-      amount: "฿ 399.00",
-      status: "商家拒绝，买家申诉中",
-      reason: "收到商品有破损",
-      buyer: "A***n"
-    },
-    {
-      id: "RF2026081602",
-      orderId: "OD112233445",
-      vendor: "大马猫山王专营 (马来西亚)",
-      productName: "顶级猫山王榴莲 400g",
-      productImage: "https://images.unsplash.com/photo-1551024506-0cb98426e711?auto=format&fit=crop&q=80&w=200",
-      amount: "RM 120.00",
-      status: "待商家处理 (超时警告)",
-      reason: "一直未发货",
-      buyer: "L***e"
-    }
-  ]);
+  const [mockRefunds, setMockRefunds] = useState<any[]>([]);
 
   const [showProcessModal, setShowProcessModal] = useState(false);
   const [selectedRefund, setSelectedRefund] = useState<any>(null);

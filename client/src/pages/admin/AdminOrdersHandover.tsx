@@ -4,24 +4,7 @@ import { Card } from "@/components/ui/card";
 import { PackageOpen } from "lucide-react";
 
 export default function AdminOrdersHandover() {
-  const [mockSelfPickup, setMockSelfPickup] = useState([
-    {
-      id: "OD987654321",
-      buyer: "A***n (泰国)",
-      phone: "+66 81 234 5678",
-      items: "Mistine 防晒霜 x 2",
-      status: "待取货",
-      date: "2026-08-16 14:00"
-    },
-    {
-      id: "OD123456789",
-      buyer: "L***e (马来西亚)",
-      phone: "+60 12 345 6789",
-      items: "Beauty Buffet 洗面奶 x 1",
-      status: "待取货",
-      date: "2026-08-17 10:30"
-    }
-  ]);
+  const [mockSelfPickup, setMockSelfPickup] = useState<any[]>([]);
 
   return (
     <AdminLayout>

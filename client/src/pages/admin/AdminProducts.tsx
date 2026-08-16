@@ -10,13 +10,7 @@ import { Currency } from "@/_core/hooks/useAppContext";
 
 export default function AdminProducts() {
   const { data: products, isLoading } = trpc.products.list.useQuery();
-  // Mock data for MVP if trpc.products.list doesn't exist yet
-  const allMockProducts = [
-    { id: 1, vendorId: "vendor_A", name: "泰国金枕头榴莲干", priceMYR: 35.9, vipPriceMYR: 29.9, stock: 150, sales: 120, pointsAwarded: 35, status: "approved", isStandard: true },
-    { id: 2, vendorId: "vendor_B", name: "Mistine 防晒霜", priceMYR: 62.0, vipPriceMYR: 52.0, stock: 200, sales: 540, pointsAwarded: 80, status: "approved", isStandard: true },
-    { id: 3, vendorId: "vendor_A", name: "新款泰式辣条", priceMYR: 5.5, vipPriceMYR: 4.5, stock: 500, sales: 0, pointsAwarded: 5, status: "pending_approval", isStandard: false },
-  ];
-  const displayProducts = products?.length ? products : allMockProducts;
+  const displayProducts = products || [];
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any>(null);

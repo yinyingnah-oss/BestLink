@@ -5,24 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Building2, Plus, Trash2, CheckCircle2 } from "lucide-react";
 
 export default function AdminFinanceBank() {
-  const [mockBanks, setMockBanks] = useState([
-    {
-      id: "B1",
-      bankName: "Kasikornbank (KBank)",
-      accountName: "BESTLINK TRADING CO., LTD",
-      accountNumber: "**** **** **** 1234",
-      isDefault: true,
-      country: "TH"
-    },
-    {
-      id: "B2",
-      bankName: "Bangkok Bank",
-      accountName: "BESTLINK TRADING",
-      accountNumber: "**** **** **** 5678",
-      isDefault: false,
-      country: "TH"
-    }
-  ]);
+  const [mockBanks, setMockBanks] = useState<any[]>([]);
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [newBank, setNewBank] = useState({

@@ -8,30 +8,7 @@ export default function AdminCSReviews() {
   const [activeTab, setActiveTab] = useState("全部评论");
   const tabs = ["全部评论", "未回复", "已回复", "带图评价", "低星评价"];
 
-  const mockReviews = [
-    {
-      id: "R1001",
-      productName: "Mistine 小黄帽防晒霜 SPF50 PA++++",
-      productImage: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&q=80&w=200",
-      rating: 5,
-      user: "A***n",
-      date: "2026-08-15 14:30",
-      content: "发货很快，防晒效果很好，去海边玩一天都没有黑！还会回购的。",
-      images: ["https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=200"],
-      reply: ""
-    },
-    {
-      id: "R1002",
-      productName: "Beauty Buffet 牛奶洗面奶",
-      productImage: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=200",
-      rating: 4,
-      user: "S***y",
-      date: "2026-08-14 09:15",
-      content: "味道很好闻，洗完不紧绷，但是包装有一点点被压到了，希望下次打包可以严实一点。",
-      images: [],
-      reply: "亲爱的买家您好，非常抱歉包裹在运输途中受到了挤压。我们已经向仓库和物流部门反馈，今后一定会加强打包保护。感谢您的支持！"
-    }
-  ];
+  const mockReviews: any[] = [];
 
   return (
     <div className="space-y-6 pb-12">
