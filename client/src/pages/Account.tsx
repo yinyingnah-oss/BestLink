@@ -13,7 +13,7 @@ import { startLogin } from "@/const";
 export default function Account() {
   const [, setLocation] = useLocation();
   const { isAuthenticated } = useAuth();
-  const { currentUser, setCurrentUser } = useAppContext();
+  const { currentUser, setCurrentUser, language, setLanguage, currency, setCurrency } = useAppContext();
   
   // If not authenticated, redirect (or show login prompt)
   if (!isAuthenticated) {
@@ -311,6 +311,42 @@ export default function Account() {
                         <div className="flex items-center text-stone-500 text-sm">
                           <span>{localProfile.email || memberData?.email || 'user@example.com'}</span>
                           <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 系统偏好设置 */}
+                    <div className="mt-8 mb-4">
+                      <h3 className="text-sm font-bold text-stone-500 mb-3 px-1">偏好设置</h3>
+                      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <div className="flex justify-between items-center px-4 py-4 border-b border-stone-50 transition-colors">
+                          <span className="text-stone-700 font-medium">语言</span>
+                          <div className="flex items-center">
+                            <select 
+                              value={language} 
+                              onChange={(e) => setLanguage(e.target.value as any)}
+                              className="bg-transparent text-sm text-stone-500 outline-none cursor-pointer text-right"
+                            >
+                              <option value="zh">中文</option>
+                              <option value="th">ไทย</option>
+                              <option value="en">English</option>
+                            </select>
+                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center px-4 py-4 transition-colors">
+                          <span className="text-stone-700 font-medium">货币显示</span>
+                          <div className="flex items-center">
+                            <select 
+                              value={currency} 
+                              onChange={(e) => setCurrency(e.target.value as any)}
+                              className="bg-transparent text-sm text-stone-500 outline-none cursor-pointer text-right"
+                            >
+                              <option value="MYR">MYR (RM)</option>
+                              <option value="THB">THB (฿)</option>
+                            </select>
+                            <ChevronRight className="w-4 h-4 ml-1 text-stone-400" />
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -127,32 +127,7 @@ export default function Home() {
 
             {/* 用户操作区与语言货币切换 */}
             <div className="flex items-center gap-5 text-stone-600">
-              <div className="hidden md:flex items-center gap-4 mr-2">
-                <div className="flex items-center gap-1 cursor-pointer hover:text-matcha-600 transition group">
-                  <Globe className="w-4 h-4 group-hover:animate-pulse" />
-                  <select 
-                    value={language} 
-                    onChange={(e) => setLanguage(e.target.value as Language)}
-                    className="bg-transparent text-sm outline-none cursor-pointer appearance-none font-medium"
-                  >
-                    <option value="zh">🇨🇳 中文</option>
-                    <option value="en">🇬🇧 English</option>
-                    <option value="ms">🇲🇾 Malay</option>
-                    <option value="th">🇹🇭 ภาษาไทย</option>
-                  </select>
-                </div>
-                <div className="flex items-center gap-1 cursor-pointer hover:text-matcha-500 transition group">
-                  <DollarSign className="w-4 h-4 group-hover:animate-pulse" />
-                  <select 
-                    value={currency} 
-                    onChange={(e) => setCurrency(e.target.value as Currency)}
-                    className="bg-transparent text-sm outline-none cursor-pointer appearance-none font-medium"
-                  >
-                    <option value="MYR">MYR (RM)</option>
-                    <option value="THB">THB (฿)</option>
-                  </select>
-                </div>
-              </div>
+
 
               <div className="flex items-center gap-2 cursor-pointer hover:text-matcha-600 transition" onClick={() => setLocation("/cart")}>
                 <ShoppingCart className="w-6 h-6" />
