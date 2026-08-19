@@ -7,6 +7,7 @@ import { Plus, Search, Edit, Calculator, ImagePlus, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Currency } from "@/_core/hooks/useAppContext";
+import { TableSkeleton } from "@/components/ui/LoadingSkeleton";
 
 export default function AdminProducts() {
   const { data: products, isLoading } = trpc.products.list.useQuery();
@@ -159,6 +160,7 @@ export default function AdminProducts() {
       </div>
 
       {!isEditing ? (
+        isLoading ? <TableSkeleton columns={7} rows={5} /> : (
         <Card className="bg-white border-stone-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm whitespace-nowrap">
@@ -206,6 +208,7 @@ export default function AdminProducts() {
             </table>
           </div>
         </Card>
+        )
       ) : (
         <Card className="bg-white border-stone-200 shadow-sm p-6 max-w-4xl">
           <h2 className="text-lg font-bold mb-6 text-stone-800 border-b pb-4">

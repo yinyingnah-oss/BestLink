@@ -255,3 +255,10 @@ export const productReviewsRelations = relations(productReviews, ({ one }) => ({
   user: one(users, { fields: [productReviews.userId], references: [users.id] }),
   merchant: one(merchants, { fields: [productReviews.merchantId], references: [merchants.id] }),
 }));
+
+export const systemSettings = pgTable("systemSettings", {
+  id: serial("id").primaryKey(),
+  key: text("key").notNull().unique(),
+  value: json("value").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull(),
+});

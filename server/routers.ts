@@ -9,6 +9,28 @@ export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure;
 
 export const appRouter = router({
+  // ==================== 全局设置路由 ====================
+  storeSettings: router({
+    get: publicProcedure.query(async () => {
+      const dbInstance = await db.getDb();
+      if (!dbInstance) return null;
+      const { eq } = await import("drizzle-orm");
+      const settings = await dbInstance.select().from(schema.systemSettings).where(eq(schema.systemSettings.key, "global")).limit(1).then(r => r[0]);
+      return settings?.value || null;
+    }),
+    update: publicProcedure.input(z.any()).mutation(async ({ input }) => {
+      const dbInstance = await db.getDb();
+      if (!dbInstance) return { success: false };
+      const { eq } = await import("drizzle-orm");
+      const existing = await dbInstance.select().from(schema.systemSettings).where(eq(schema.systemSettings.key, "global")).limit(1).then(r => r[0]);
+      if (existing) {
+        await dbInstance.update(schema.systemSettings).set({ value: input }).where(eq(schema.systemSettings.key, "global"));
+      } else {
+        await dbInstance.insert(schema.systemSettings).values({ key: "global", value: input });
+      }
+      return { success: true };
+    }),
+  }),
   // ==================== 商品相关路由 ====================
   products: router({
     // 获取所有分类

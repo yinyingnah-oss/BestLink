@@ -8,20 +8,7 @@ import { ShoppingCart, Search, User, Globe, DollarSign, Store, CheckCircle, Truc
 import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 
-const PROMO_BANNERS = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&q=80&w=1200", // Trendy cosmetics
-    title: "泰式潮流美妆节",
-    subtitle: "尽享曼谷顶级爆款，满 RM100 包邮！",
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=1200", // Colorful skincare
-    title: "夏日焕新计划",
-    subtitle: "官方直营，100% 正品保证，今日下单立减10%",
-  }
-];
+
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
@@ -45,6 +32,9 @@ export default function Home() {
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const [filterType, setFilterType] = useState<'all' | 'mall' | 'daigou'>('all');
   const limit = 20;
+
+  const { data: storeSettings, isLoading: isSettingsLoading } = trpc.storeSettings.get.useQuery();
+  const PROMO_BANNERS = storeSettings?.banners || [];
 
   useEffect(() => {
     // Load store info
@@ -162,36 +152,42 @@ export default function Home() {
         
         {/* 高级动态 Banner */}
         {!searchQuery && (
-          <div className="relative w-full h-48 md:h-72 lg:h-[400px] rounded-[2rem] overflow-hidden mb-12 shadow-2xl group">
-            <div 
-              className="flex h-full transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(-${currentBannerIndex * 100}%)` }}
-            >
-              {PROMO_BANNERS.map((banner) => (
-                <div key={banner.id} className="min-w-full h-full relative">
-                  <img src={banner.image} alt={banner.title} className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-10000" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-slate-900/40 to-transparent flex flex-col justify-center px-10 md:px-20">
-                    <span className="text-matcha-400 font-bold tracking-widest mb-2 uppercase text-sm md:text-base">Official Store</span>
-                    <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-black mb-4 drop-shadow-lg leading-tight">{banner.title}</h2>
-                    <p className="text-white/90 text-sm md:text-lg lg:text-xl font-medium max-w-lg drop-shadow-md backdrop-blur-sm bg-white/10 p-3 rounded-xl inline-block border border-white/20">
-                      {banner.subtitle}
-                    </p>
+          isSettingsLoading ? (
+            <div className="w-full h-[250px] md:h-[400px] mb-8 rounded-3xl overflow-hidden shadow-sm relative bg-stone-100 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-stone-200 via-stone-100 to-stone-200 animate-[shimmer_2s_infinite]" style={{ backgroundSize: '200% 100%' }}></div>
+            </div>
+          ) : PROMO_BANNERS.length > 0 && (
+            <div className="relative w-full h-48 md:h-72 lg:h-[400px] rounded-[2rem] overflow-hidden mb-12 shadow-2xl group">
+              <div 
+                className="flex h-full transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentBannerIndex * 100}%)` }}
+              >
+                {PROMO_BANNERS.map((banner: any) => (
+                  <div key={banner.id} className="min-w-full h-full relative">
+                    <img src={banner.image} alt={banner.title} className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-10000" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-slate-900/40 to-transparent flex flex-col justify-center px-10 md:px-20">
+                      <span className="text-matcha-400 font-bold tracking-widest mb-2 uppercase text-sm md:text-base">Official Store</span>
+                      <h2 className="text-white text-3xl md:text-5xl lg:text-6xl font-black mb-4 drop-shadow-lg leading-tight">{banner.title}</h2>
+                      <p className="text-white/90 text-sm md:text-lg lg:text-xl font-medium max-w-lg drop-shadow-md backdrop-blur-sm bg-white/10 p-3 rounded-xl inline-block border border-white/20">
+                        {banner.subtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              
+              {/* Dots */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+                {PROMO_BANNERS.map((_, idx) => (
+                  <button 
+                    key={idx} 
+                    onClick={() => setCurrentBannerIndex(idx)}
+                    className={`h-2.5 rounded-full transition-all duration-500 shadow-sm ${idx === currentBannerIndex ? 'bg-matcha-500 w-8' : 'bg-white/70 w-2.5 hover:bg-white'}`}
+                  />
+                ))}
+              </div>
             </div>
-            
-            {/* Dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-              {PROMO_BANNERS.map((_, idx) => (
-                <button 
-                  key={idx} 
-                  onClick={() => setCurrentBannerIndex(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-500 shadow-sm ${idx === currentBannerIndex ? 'bg-matcha-500 w-8' : 'bg-white/70 w-2.5 hover:bg-white'}`}
-                />
-              ))}
-            </div>
-          </div>
+          )
         )}
 
         {/* 标题与筛选 */}

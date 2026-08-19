@@ -3,6 +3,7 @@ import AdminLayout from "./AdminLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAppContext } from "@/_core/hooks/useAppContext";
+import { trpc } from "@/lib/trpc";
 import { Save, Image as ImageIcon, LayoutTemplate, Smartphone, Monitor, Type } from "lucide-react";
 
 export default function AdminStoreDecoration() {
@@ -14,6 +15,22 @@ export default function AdminStoreDecoration() {
   const [uploadTarget, setUploadTarget] = useState<string | null>(null);
   const [bannerImage, setBannerImage] = useState<string | null>(null);
   const [categoryImages, setCategoryImages] = useState<Record<number, string>>({});
+
+  const utils = trpc.useContext();
+  const { data: settings } = trpc.storeSettings.get.useQuery();
+  const updateSettings = trpc.storeSettings.update.useMutation({
+    onSuccess: () => {
+      utils.storeSettings.get.invalidate();
+      setIsSaving(false);
+      alert("保存成功 (Saved successfully)");
+    }
+  });
+
+  React.useEffect(() => {
+    if (settings && settings.banners && settings.banners.length > 0) {
+      setBannerImage(settings.banners[0].image);
+    }
+  }, [settings]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -39,10 +56,11 @@ export default function AdminStoreDecoration() {
 
   const handleSave = () => {
     setIsSaving(true);
-    setTimeout(() => {
-      setIsSaving(false);
-      alert("保存成功 (Saved successfully)");
-    }, 1000);
+    const newSettings = {
+      ...(settings || {}),
+      banners: bannerImage ? [{ id: 1, image: bannerImage, title: "Custom Banner", subtitle: "" }] : []
+    };
+    updateSettings.mutate(newSettings);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { eq, and, desc, asc, like, gte, lte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import { InsertUser, users, products, categories, orders, orderItems, cartItems, coupons, shipments, pointsTransactions } from "../drizzle/schema";
+import { InsertUser, users, systemSettings, products, categories, orders, orderItems, cartItems, coupons, shipments, pointsTransactions } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
